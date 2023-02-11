@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package org.cloudcoder.daemon;
+package org.lawman.daemon;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -34,8 +34,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.cloudcoder.daemon.IOUtil;
-import org.cloudcoder.daemon.Util;
+import org.lawman.daemon.IOUtil;
+import org.lawman.daemon.Util;
 
 /**
  * Upgrade a single-jarfile executable to the latest version,

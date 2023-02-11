@@ -39,7 +39,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>com.lawman.app.App</mainClass>
+              <mainClass>com.lawman.app.AppMain</mainClass>
             </manifest>
           </archive>
         </configuration>

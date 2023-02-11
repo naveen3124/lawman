@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package org.cloudcoder.daemon;
+package org.lawman.daemon;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -131,7 +131,7 @@ public class DaemonLauncher {
 		launchCmdBuilder.append(stdoutLogFile);
 		launchCmdBuilder.append("' 2>&1 ) &");
 		String launchCmd = launchCmdBuilder.toString();
-		//System.out.println("launchCmd=" + launchCmd);
+		System.out.println("launchCmd=" + launchCmd);
 		
 		// Make sure that the directory for the stdout log file exists.
 		// If this directory doesn't exist, then the launch command will

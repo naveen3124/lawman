@@ -1,3 +1,3 @@
 
-code underneath this package is taken from the 
-https://github.com/daveho/Daemon
+//code underneath this package is taken from the 
+//https://github.com/daveho/Daemon
