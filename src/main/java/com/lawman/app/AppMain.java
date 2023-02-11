@@ -14,6 +14,22 @@ public class AppMain extends DaemonController {
 		return AppDaemon.class;
 	}
 
+	private static class Options extends DaemonController.Options {
+	@Override
+	public String getStdoutLogFileName() {
+		String logFileName = super.getStdoutLogFileName();
+		if (logFileName == null) {
+			logFileName = "logs/stdout.log";
+		}
+		return logFileName;
+	}
+	}
+
+	@Override
+	protected org.lawman.daemon.DaemonController.Options createOptions() {
+		return new Options();
+	}
+
 	public static void main(String[] args) {
 		AppMain controller = new AppMain();
 		controller.exec(args);

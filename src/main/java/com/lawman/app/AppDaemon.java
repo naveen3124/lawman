@@ -2,8 +2,10 @@ package com.lawman.app;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import org.lawman.daemon.IDaemon;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.lawman.daemon.IDaemon;
+import org.lawman.command.InsertFileCommand;
 
 public class AppDaemon implements IDaemon {
 	/**
@@ -17,13 +19,18 @@ public class AppDaemon implements IDaemon {
 	private class Worker implements Runnable {
 		@Override
 		public void run() {
+			System.out.println("worker thread is started");
 			while (!shutdown) {
 				try {
 					String command = commandQueue.take();
 					System.out.println("Received a command: " + command);
-					System.err.println("Same command, to stderr: " + command);
+					ObjectMapper objectMapper = new ObjectMapper();
+                                        InsertFileCommand cmd = objectMapper.readValue(command, InsertFileCommand.class);
+					cmd.execute();
 				} catch (InterruptedException e) {
 					System.out.println("Worker thread interrupted, shutting down");
+				} catch (Exception e) {
+					System.out.println("Worker thread shutdown " + e.getMessage());
 				}
 			}
 		}
@@ -54,6 +61,7 @@ public class AppDaemon implements IDaemon {
 	public void handleCommand(String command) {
 		try {
 			// Send the command to the worker
+			System.out.println(command);
 			commandQueue.put(command);
 		} catch (InterruptedException e) {
 			System.out.println("This should not happen");

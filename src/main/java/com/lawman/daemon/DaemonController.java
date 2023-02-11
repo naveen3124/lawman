@@ -164,7 +164,7 @@ public abstract class DaemonController {
 		try {
 			doExec(args);
 		} catch (DaemonException e) {
-			System.err.println("Error: " + e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		} catch (IllegalArgumentException e) {
 			System.err.println("Error: " + e.getMessage());
 		}

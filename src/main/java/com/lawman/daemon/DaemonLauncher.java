@@ -200,6 +200,12 @@ public class DaemonLauncher {
 		
 		// Read commands (issued by the DaemonController) from the FIFO
 		String fifoName = Util.getFifoName(instanceName, pid);
+		File f = new File(fifoName);
+		if(!f.exists()){
+			f.createNewFile();
+		}else{
+			System.out.println("File already exists");
+		}
 		BufferedReader reader = null;
 		boolean shutdown = false;
 		while (!shutdown) {
@@ -210,7 +216,6 @@ public class DaemonLauncher {
 			
 			// Read a command from the FIFO
 			String line = reader.readLine();
-			
 			if (line == null) {
 				// EOF on FIFO
 				IOUtil.closeQuietly(reader);
@@ -230,7 +235,6 @@ public class DaemonLauncher {
 				}
 			}
 		}
-		
 		// Shut down the daemon
 		daemon.shutdown();
 	}
