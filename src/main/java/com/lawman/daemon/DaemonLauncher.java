@@ -24,6 +24,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -234,6 +235,9 @@ public class DaemonLauncher {
 					}
 				}
 			}
+			PrintWriter writer = new PrintWriter(fifoName);
+			writer.print("");
+
 		}
 		// Shut down the daemon
 		daemon.shutdown();
