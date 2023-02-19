@@ -23,7 +23,7 @@ public class InsertFileCommand implements Command {
 
     private String fileName;
 
-    static public String Init() {
+    public static String Init() {
 	if (isInit) {
 	    return cmdName;
 	}
